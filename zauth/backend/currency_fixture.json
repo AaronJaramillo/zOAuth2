@@ -1,0 +1,8 @@
+[
+    {
+        "model": "backend.Currency",
+        "fields": {
+            "ticker": "ZEC"
+        }
+    }
+]
