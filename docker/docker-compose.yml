@@ -1,0 +1,37 @@
+version: '2'
+services:
+    zcashd_client:
+        image: electriccoinco/zcashd:latest
+        env_file:
+            - .env
+        volumes:
+            - ./zcash-client.conf:/srv/zcashd/.zcash/zcash.conf
+            - ./zcash-params-regtest/:/srv/zcashd/.zcash-params
+            - ./regtest-datadir-client/:/srv/zcashd/.zcash/regtest
+        ports:
+            - "0.0.0.0:38232:38232"
+            - "0.0.0.0:18332:18332"
+        mem_limit: 4G
+        #zcashd_admin:
+        #zcasimage: electriccoinco/zcashd:latest
+        #zcasenv_file:
+        #zcas    - .env
+        #zcasvolumes:
+        #zcas    - ./zcash-admin.conf:/srv/zcashd/.zcash/zcash.conf
+        #zcas    - ./zcash-params-regtest/:/srv/zcashd/.zcash-params
+        #zcas    - ./regtest-datadir-admin/:/srv/zcashd/.zcash/regtest
+        #zcasports:
+        #zcas    - "0.0.0.0:38233:38233"
+        #zcas    - "0.0.0.0:18333:18333"
+        #zcasmem_limit: 4G
+
+        #zcashd_testnet:
+        #zcasimage: electriccoinco/zcashd:latest
+        #zcasenv_file:
+        #zcas    - .env
+        #zcasvolumes:
+        #zcas    - ./zcash-testnet.conf:/srv/zcashd/.zcash/zcash.conf
+        #zcas    - ./zcash-params/:/srv/zcashd/./zcash-params
+        #zcas    - ./testnet-datadir/:/srv/zcashd/.zcash/testnet3
+        #zcasports:
+        #zcas    - "0.0.0.0:38232:38232"
