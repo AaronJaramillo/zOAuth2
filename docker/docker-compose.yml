@@ -2,8 +2,6 @@ version: '2'
 services:
     zcashd_client:
         image: electriccoinco/zcashd:latest
-        env_file:
-            - .env
         volumes:
             - ./zcash-client.conf:/srv/zcashd/.zcash/zcash.conf
             - ./zcash-params-regtest/:/srv/zcashd/.zcash-params

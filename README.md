@@ -24,7 +24,7 @@ finally, in another terminal window, cd into zautha/ and setup then run the auth
 
 `python3 manage.py migrate`
 
-`python3 manage.py loaddata backend/currency_fixtures.json`
+`python3 manage.py loaddata backend/currency_fixture.json`
 
 `export AUTHLIB_INSECURE_TRANSPORT=1 && python3 manage.py runserver`
 
