@@ -5,8 +5,19 @@ from auth import ecdsaJWT
 from authlib.integrations.requests_client import OAuth2Session
 import time
 
-
 node = AuthServiceProxy('http://user:password@0.0.0.0:38232')
+
+def node_setup():
+    address = node.getnewaddress()#'tmQj7xUdizNE8uNqiDBkVUBtNrydkQtjpn4'
+    #node.generate(500)
+    print(node.sendtoaddress(address, 100))
+    node.generate(10)
+    print(address)
+    return address
+
+FROM_ADDRESS = node_setup()
+
+
 
 def get_products():
     response = requests.get('http://127.0.0.1:8000/api/get_products')
@@ -63,7 +74,7 @@ def get_pubkey_thumbprint(keys):
     # authenticat
     # make endpoint request
 def get_first_product_and_purchase():
-    fromAddress = "tmQj7xUdizNE8uNqiDBkVUBtNrydkQtjpn4"
+    fromAddress = FROM_ADDRESS
     products = get_products()
     public_key = create_key_pair()
     print(public_key.hex())
