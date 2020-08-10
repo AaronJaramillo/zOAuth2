@@ -63,3 +63,8 @@ class TestOAuth2ClientModel(ClientTestCase):
         self.assertEqual(allowed_scopes2, 'ONE_OFF_CONTENT')
         allowed_scopes3 = client.get_allowed_scope('PLATINUM DIAMOND')
         self.assertEqual(allowed_scopes3, '')
+
+class TestOAuth2Token(ClientTestCase):
+    """TestOAuth2Token."""
+
+    pass

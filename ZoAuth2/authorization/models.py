@@ -3,6 +3,11 @@ from django.db import models
 from django.core.exceptions import ObjectDoesNotExist
 from authlib.oauth2.rfc6749.models import ClientMixin, TokenMixin
 from authlib.jose import ECKey
+import time
+
+def now_timestamp():
+    return int(time.time())
+
 
 
 # Create your models here.
@@ -121,3 +126,30 @@ class OAuth2Client(models.Model, ClientMixin):
     def check_grant_type(self, grant_type):
         allowed = str(self.grant_type).split()
         return grant_type in allowed
+
+
+class OAuth2Token(models.Model, TokenMixin):
+    """OAuth2Token."""
+    # TODO add time limit functionality for payments
+
+    client_id = models.CharField(max_length=48, db_index=True)
+    user_id = models.CharField(max_length=48)
+    token_type = models.CharField(max_length=40)
+    access_token = models.CharField(max_length=255, unique=True, null=False)
+    refresh_token = models.CharField(max_length=255, db_index=True)
+    scope = models.TextField(default='')
+    revoked = models.BooleanField(default=False)
+    issued_at = models.IntegerField(null=False, default=now_timestamp)
+    expires_in = models.IntegerField(null=False, default=0)
+
+    def get_client_id(self):
+        return self.client_id
+
+    def get_scope(self):
+        return self.scope
+
+    def get_expires_in(self):
+        return self.expires_in
+
+    def get_expires_at(self):
+        return self.issued_at + self.expires_in
