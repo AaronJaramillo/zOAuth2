@@ -59,6 +59,7 @@ class OAuth2Client(models.Model, ClientMixin):
     client_id = models.CharField(max_length=43, unique=True, db_index=True)
     user_id = models.CharField(max_length=43)
     client_name = models.CharField(max_length=120, blank=True)
+    client_secret = models.CharField(max_length=48, blank=True)
     redirect_uris = models.TextField(default='')
     default_redirect_uri = models.TextField(blank=False, default='')
     scope = models.TextField(default='')
@@ -112,6 +113,9 @@ class OAuth2Client(models.Model, ClientMixin):
         if redirect_uri == self.default_redirect_uri:
             return True
         return redirect_uri in self.redirect_uris
+
+    def check_client_secret(self, client_secret):
+        return self.client_secret == client_secret
 
     def has_client_secret(self):
         return bool(self.client_secret)
