@@ -1,7 +1,7 @@
 import os
 import json
 from authorization.ZoAuth2Server import authorization
-from authorization.ZoAuth2Server import ecdsaJWT
+from authorization.ZoAuth2 import ecdsaJWT
 from .AuthServerTestCase import AuthorizationServerTestCase
 from .utils.utils import read_file_path
 from .OAuth2SessionFactory import OAuth2SessionFactory
