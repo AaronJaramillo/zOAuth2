@@ -123,6 +123,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+AUTHORIZATION_SERVER_TOKEN_ENDPOINT_URI = 'http://127.0.0.1:8000/authorization/token'
+
 Q_CLUSTER = {
     'name': 'ZoAuth2_q_django',
 }
@@ -130,3 +132,4 @@ Q_CLUSTER = {
 REQUIRED_CONFS=1
 DEFAULT_CURRENCY='ZEC'
 RPC_API_URL='http://user:password@0.0.0.0:38232'
+
