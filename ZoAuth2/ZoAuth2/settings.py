@@ -32,6 +32,9 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'authorization.apps.AuthorizationConfig',
+    'registration.apps.RegistrationConfig',
+    'merchant.apps.MerchantConfig',
+    'django_q',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -119,3 +122,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+Q_CLUSTER = {
+    'name': 'ZoAuth2_q_django',
+}
+
+REQUIRED_CONFS=1
+DEFAULT_CURRENCY='ZEC'
+RPC_API_URL='http://user:password@0.0.0.0:38232'

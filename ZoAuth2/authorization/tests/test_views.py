@@ -25,5 +25,4 @@ class TestIntrospectionView(ClientWithTokenTestCase):
             '/authorization/introspection',
             {'token': self.token.access_token},
             HTTP_AUTHORIZATION=auth_header)
-        print(response.json())
         self.assertEqual(response.json()['active'], True)

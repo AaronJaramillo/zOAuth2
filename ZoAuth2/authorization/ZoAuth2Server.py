@@ -112,6 +112,6 @@ require_oauth = ResourceProtector()
 authorization.register_grant(ClientCredentialsGrant)
 authorization.register_client_auth_method(
     JWTClientAuth.CLIENT_AUTH_METHOD,
-    JWTClientAuth('/authorization/token'))
+    JWTClientAuth('http://127.0.0.1:8000/authorization/token'))
 authorization.register_endpoint(ZoAuth2IntrospectionEndpoint)
 require_oauth.register_token_validator(BearerTokenValidator(OAuth2Token))
