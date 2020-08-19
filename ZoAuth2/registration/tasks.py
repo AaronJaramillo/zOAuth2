@@ -1,6 +1,6 @@
 from bitcoinrpc.authproxy import AuthServiceProxy
 from socket import error as socket_error
-from .models import Product, Transaction, Currency
+from registration.models import Product, Transaction, Currency
 from ZoAuth2 import settings
 
 def query_transactions():
